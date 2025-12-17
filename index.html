@@ -1,15 +1,432 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="index.css"/>
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mon-portfolio</title>
-  </head>
-  <body>
-     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olivier PAVILLA | SysAdmin & Cybersec MBA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Utilisation de unpkg pour une meilleure fiabilité du chargement UMD -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --terminal-green: #00ff41;
+            --cyber-blue: #0ea5e9;
+            --dark-bg: #0f172a;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-bg);
+            color: #e2e8f0;
+        }
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .terminal-cursor {
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .cyber-grid {
+            background-image: linear-gradient(rgba(14, 165, 233, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(14, 165, 233, 0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-cyan-500 selection:text-white">
+
+    <!-- Background Grid Effect -->
+    <div class="fixed inset-0 cyber-grid pointer-events-none z-0"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-panel border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0 font-mono text-cyan-400 font-bold text-xl">
+                    <span class="text-white">&lt;</span>OP<span class="text-white">/&gt;</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4 font-mono text-sm">
+                        <a href="#home" class="hover:text-cyan-400 px-3 py-2 rounded-md transition-colors">~/accueil</a>
+                        <a href="#about" class="hover:text-cyan-400 px-3 py-2 rounded-md transition-colors">~/bio</a>
+                        <a href="#experience" class="hover:text-cyan-400 px-3 py-2 rounded-md transition-colors">~/expériences</a>
+                        <a href="#skills" class="hover:text-cyan-400 px-3 py-2 rounded-md transition-colors">~/compétences</a>
+                        <a href="#contact" class="bg-cyan-600 hover:bg-cyan-700 text-white px-4 py-2 rounded transition-all">Connect</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative z-10 min-h-screen flex items-center justify-center pt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid md:grid-cols-2 gap-12 items-center">
+            
+            <!-- Text Content -->
+            <div>
+                <div class="inline-flex items-center px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-500/10 text-cyan-400 text-xs font-mono mb-6">
+                    <span class="relative flex h-2 w-2 mr-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+                    </span>
+                    En recherche d'alternance / défis Cyber
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold mb-4 tracking-tight">
+                    Olivier <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">PAVILLA</span>
+                </h1>
+                <h2 class="text-2xl md:text-3xl text-slate-400 mb-6 font-mono">
+                    Admin Sys & Réseau <br>
+                    <span class="text-cyan-400">Étudiant MBA Cybersécurité</span>
+                </h2>
+                <p class="text-slate-400 text-lg mb-8 max-w-lg leading-relaxed">
+                    Expertise Linux, virtualisation et infrastructures complexes. 
+                    Actuellement en transition vers l'architecture de sécurité offensive et défensive.
+                    J'aime résoudre ce qui semble impossible.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contact" class="px-8 py-3 bg-gradient-to-r from-cyan-600 to-blue-600 rounded font-bold hover:shadow-[0_0_20px_rgba(8,145,178,0.5)] transition-all border border-cyan-500">
+                        Me Contacter
+                    </a>
+                    <a href="CV_Olivier_PAVILLA.pdf" target="_blank" class="px-8 py-3 glass-panel rounded font-bold hover:bg-white/10 transition-all flex items-center gap-2">
+                        <i data-lucide="file-text" class="w-4 h-4"></i> Télécharger CV
+                    </a>
+                </div>
+            </div>
+
+            <!-- Terminal Component -->
+            <div class="w-full">
+                <div class="rounded-lg overflow-hidden border border-slate-700 bg-[#0c0c0c] shadow-2xl font-mono text-sm relative group">
+                    <!-- Terminal Header -->
+                    <div class="bg-slate-800 px-4 py-2 flex items-center justify-between border-b border-slate-700">
+                        <div class="flex space-x-2">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        </div>
+                        <div class="text-slate-400 text-xs">root@portfolio:~</div>
+                        <div></div>
+                    </div>
+                    <!-- Terminal Body -->
+                    <div class="p-6 h-[350px] overflow-y-auto text-green-400" id="terminal-body" onclick="document.getElementById('terminal-input').focus()">
+                        <div class="mb-4 text-slate-400">
+                            Bienvenue sur le terminal interactif v2.0.5 <br>
+                            Tapez <span class="text-cyan-400">'help'</span> pour voir les commandes disponibles.
+                        </div>
+                        <div id="output-history"></div>
+                        <div class="flex">
+                            <span class="mr-2 text-cyan-400">guest@olivier:~$</span>
+                            <input type="text" id="terminal-input" class="bg-transparent border-none outline-none text-green-400 w-full font-mono focus:ring-0" autocomplete="off" autofocus>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-center text-xs text-slate-500 mt-4 font-mono">Essayez: 'skills', 'experience', 'contact', 'clear'</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="relative z-10 py-24 bg-slate-900/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-16 flex items-center gap-3">
+                <span class="text-cyan-400 font-mono">01.</span> Expériences Professionnelles
+            </h2>
+
+            <div class="relative border-l border-cyan-500/20 ml-4 space-y-12">
+                
+                <!-- Exp 1 -->
+                <div class="ml-8 relative group">
+                    <span class="absolute -left-[41px] top-1 h-5 w-5 rounded-full border-2 border-cyan-500 bg-slate-900 group-hover:bg-cyan-500 transition-colors"></span>
+                    <div class="glass-panel p-6 rounded-lg hover:border-cyan-500/50 transition-all">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold text-white">Exploitant de systèmes d'Information (Cat. A)</h3>
+                            <span class="font-mono text-cyan-400 text-sm">2024 - 2025</span>
+                        </div>
+                        <h4 class="text-slate-400 font-mono mb-4">Ministère des Armées | SID-EPN, Versailles</h4>
+                        <ul class="space-y-2 text-slate-300 text-sm list-disc list-inside marker:text-cyan-500">
+                            <li>Administration de serveurs Windows & Linux en environnement critique.</li>
+                            <li>Gestion de bases de données PostgreSQL et MS SQL Server.</li>
+                            <li>Virtualisation sous VMWare / Vsphere.</li>
+                            <li>Gestion de 20 Systèmes d'Information actifs.</li>
+                        </ul>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-cyan-900/30 text-cyan-300 text-xs rounded border border-cyan-900 font-mono">VMWare</span>
+                            <span class="px-2 py-1 bg-cyan-900/30 text-cyan-300 text-xs rounded border border-cyan-900 font-mono">Linux</span>
+                            <span class="px-2 py-1 bg-cyan-900/30 text-cyan-300 text-xs rounded border border-cyan-900 font-mono">SQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exp 2 -->
+                <div class="ml-8 relative group">
+                    <span class="absolute -left-[41px] top-1 h-5 w-5 rounded-full border-2 border-slate-600 bg-slate-900 group-hover:border-cyan-500 transition-colors"></span>
+                    <div class="glass-panel p-6 rounded-lg hover:border-cyan-500/50 transition-all">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold text-white">Gestionnaire d'infrastructures (Cat. A)</h3>
+                            <span class="font-mono text-slate-400 text-sm">2016 - 2024</span>
+                        </div>
+                        <h4 class="text-slate-400 font-mono mb-4">CNRS (CES, APC, LIMSI)</h4>
+                        <p class="text-sm text-slate-400 italic mb-4">Évolution sur plusieurs laboratoires de recherche (UMR 8174, UMR 7164, UPR 3251)</p>
+                        <ul class="space-y-2 text-slate-300 text-sm list-disc list-inside marker:text-cyan-500">
+                            <li><strong class="text-white">Automatisation & Déploiement :</strong> Mise en place de FOG Project (Linux), WAPT, MDT/WDS et clonage pour cluster de rendu.</li>
+                            <li><strong class="text-white">Migration & AD :</strong> Migration Windows 7 vers 10, mise en place Active Directory, GPO.</li>
+                            <li><strong class="text-white">Outils DevOps/Web :</strong> Administration Gitlab, MediaWiki, GLPI avec Fusion Inventory.</li>
+                            <li><strong class="text-white">Scripting :</strong> Automatisation via PowerShell.</li>
+                            <li><strong class="text-white">Sécurité :</strong> Automatisation du chiffrement des postes clients (Bitlocker).</li>
+                        </ul>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-slate-800 text-slate-300 text-xs rounded border border-slate-700 font-mono">FOG Project</span>
+                            <span class="px-2 py-1 bg-slate-800 text-slate-300 text-xs rounded border border-slate-700 font-mono">Gitlab</span>
+                            <span class="px-2 py-1 bg-slate-800 text-slate-300 text-xs rounded border border-slate-700 font-mono">PowerShell</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exp 3 -->
+                <div class="ml-8 relative group">
+                    <span class="absolute -left-[41px] top-1 h-5 w-5 rounded-full border-2 border-slate-600 bg-slate-900 transition-colors"></span>
+                    <div class="glass-panel p-6 rounded-lg opacity-80 hover:opacity-100 transition-all">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold text-white">Technicien SIC (Cat. B)</h3>
+                            <span class="font-mono text-slate-400 text-sm">2011 - 2015</span>
+                        </div>
+                        <h4 class="text-slate-400 font-mono mb-4">Ministère de l'Intérieur</h4>
+                        <ul class="space-y-2 text-slate-300 text-sm list-disc list-inside marker:text-cyan-500">
+                            <li>Administration Active Directory et VPN profil itinérant.</li>
+                            <li>Développement Web (PHP/MySQL, Zend Framework) en environnement Linux.</li>
+                            <li>Gestion de flotte mobile sécurisée.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section with Grid -->
+    <section id="skills" class="relative z-10 py-24">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-16 flex items-center gap-3">
+                <span class="text-cyan-400 font-mono">02.</span> Arsenal Technique
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-slate-800/50 p-6 rounded-lg border border-slate-700 hover:border-cyan-500 transition-colors group">
+                    <div class="text-cyan-400 mb-4"><i data-lucide="server" class="w-8 h-8"></i></div>
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-cyan-400 transition-colors">Systèmes & Virtualisation</h3>
+                    <div class="h-1 w-10 bg-cyan-500 mb-4"></div>
+                    <ul class="text-slate-400 text-sm space-y-2 font-mono">
+                        <li>> Linux (Debian/RedHat)</li>
+                        <li>> Windows Server / AD DS</li>
+                        <li>> VMware vSphere / ESXi</li>
+                        <li>> Proxmox</li>
+                    </ul>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-slate-800/50 p-6 rounded-lg border border-slate-700 hover:border-cyan-500 transition-colors group">
+                    <div class="text-cyan-400 mb-4"><i data-lucide="shield" class="w-8 h-8"></i></div>
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-cyan-400 transition-colors">Cybersécurité & Réseau</h3>
+                    <div class="h-1 w-10 bg-cyan-500 mb-4"></div>
+                    <ul class="text-slate-400 text-sm space-y-2 font-mono">
+                        <li>> SecNum Académie (ANSSI)</li>
+                        <li>> VPN & Chiffrement (Bitlocker)</li>
+                        <li>> Gestion des identités</li>
+                        <li>> RGPD & Analyse de risques</li>
+                    </ul>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-slate-800/50 p-6 rounded-lg border border-slate-700 hover:border-cyan-500 transition-colors group">
+                    <div class="text-cyan-400 mb-4"><i data-lucide="terminal" class="w-8 h-8"></i></div>
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-cyan-400 transition-colors">Outils & Scripting</h3>
+                    <div class="h-1 w-10 bg-cyan-500 mb-4"></div>
+                    <ul class="text-slate-400 text-sm space-y-2 font-mono">
+                        <li>> PowerShell / Bash</li>
+                        <li>> Gitlab / Mediawiki</li>
+                        <li>> FOG Project / WAPT</li>
+                        <li>> PostgreSQL / MySQL</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="relative z-10 py-24 bg-slate-900/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-12 flex items-center gap-3">
+                <span class="text-cyan-400 font-mono">03.</span> Formation & Certifications
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-6 border-b border-slate-700 pb-2">Cursus Académique</h3>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 mt-1 text-cyan-500"><i data-lucide="graduation-cap"></i></div>
+                            <div>
+                                <h4 class="font-bold text-lg">MBA Cybersécurité (RNCP 7)</h4>
+                                <p class="text-cyan-400 font-mono text-sm">2025 - 2026 | Digital Campus - HETIC</p>
+                                <p class="text-slate-400 text-sm mt-1">Architecture sécurisée, Audit, GRC.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 mt-1 text-slate-500"><i data-lucide="graduation-cap"></i></div>
+                            <div>
+                                <h4 class="font-bold text-lg text-slate-300">Bachelor Administrateur AIS (RNCP 6)</h4>
+                                <p class="text-slate-500 font-mono text-sm">2022 - 2023 | Digital Campus</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-6 border-b border-slate-700 pb-2">Certifications</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-slate-800 rounded border border-green-500/30 text-green-400 font-mono text-sm flex items-center gap-2">
+                            <i data-lucide="check-circle" class="w-4 h-4"></i> Google IT Support
+                        </span>
+                        <span class="px-4 py-2 bg-slate-800 rounded border border-green-500/30 text-green-400 font-mono text-sm flex items-center gap-2">
+                            <i data-lucide="check-circle" class="w-4 h-4"></i> Comptia A+
+                        </span>
+                        <span class="px-4 py-2 bg-slate-800 rounded border border-green-500/30 text-green-400 font-mono text-sm flex items-center gap-2">
+                            <i data-lucide="check-circle" class="w-4 h-4"></i> Proxmox
+                        </span>
+                        <span class="px-4 py-2 bg-slate-800 rounded border border-green-500/30 text-green-400 font-mono text-sm flex items-center gap-2">
+                            <i data-lucide="check-circle" class="w-4 h-4"></i> SecNum Académie
+                        </span>
+                    </div>
+                    
+                    <div class="mt-8 p-4 bg-yellow-500/10 border border-yellow-500/30 rounded">
+                        <h5 class="text-yellow-500 font-bold text-sm mb-1 flex items-center gap-2">
+                            <i data-lucide="alert-triangle" class="w-4 h-4"></i> Soft Skills
+                        </h5>
+                        <p class="text-slate-400 text-sm">
+                            Gestion de projet, Collaboration multidisciplinaire, Anglais courant, Analyse du besoin.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="relative z-10 py-24">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold mb-6">Prêt à sécuriser votre infrastructure ?</h2>
+            <p class="text-slate-400 mb-12 text-lg">
+                Actuellement basé à Chartres, mobile et disponible pour des défis en administration système et cybersécurité.
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-6 text-left">
+                <a href="mailto:olivier.pavilla@gmail.com" class="glass-panel p-6 rounded-lg hover:bg-cyan-900/20 transition-all group text-center cursor-pointer block">
+                    <div class="inline-flex p-3 rounded-full bg-slate-800 text-cyan-400 mb-4 group-hover:scale-110 transition-transform">
+                        <i data-lucide="mail" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-white font-bold mb-1">Email</h3>
+                    <p class="text-slate-400 text-sm break-all">olivier.pavilla@gmail.com</p>
+                </a>
+
+                <div class="glass-panel p-6 rounded-lg text-center">
+                    <div class="inline-flex p-3 rounded-full bg-slate-800 text-cyan-400 mb-4">
+                        <i data-lucide="phone" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-white font-bold mb-1">Téléphone</h3>
+                    <p class="text-slate-400 text-sm">+33 (0) 782 25 68 81</p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-lg text-center">
+                    <div class="inline-flex p-3 rounded-full bg-slate-800 text-cyan-400 mb-4">
+                        <i data-lucide="map-pin" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-white font-bold mb-1">Localisation</h3>
+                    <p class="text-slate-400 text-sm">28000 Chartres, France</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 py-8 bg-slate-900 text-center text-slate-500 text-sm font-mono">
+        <p>Développé par Olivier PAVILLA © 2025. <br> <span class="text-xs">HTML5 / TailwindCSS / JS Vanilla</span></p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Icons safely
+        // Attendre que la fenêtre soit chargée pour s'assurer que le script externe est prêt
+        window.addEventListener('load', function() {
+            if (window.lucide) {
+                lucide.createIcons();
+            } else {
+                console.error("Lucide library failed to load or is blocked.");
+            }
+        });
+
+        // Terminal Logic
+        const terminalInput = document.getElementById('terminal-input');
+        const outputHistory = document.getElementById('output-history');
+        const terminalBody = document.getElementById('terminal-body');
+
+        const commands = {
+            'help': 'Commandes disponibles: <br> - <span class="text-cyan-400">about</span>: Qui suis-je ?<br> - <span class="text-cyan-400">skills</span>: Mes compétences<br> - <span class="text-cyan-400">experience</span>: Mon parcours<br> - <span class="text-cyan-400">contact</span>: Me joindre<br> - <span class="text-cyan-400">clear</span>: Effacer l\'écran',
+            'about': 'Olivier PAVILLA. Informaticien passionné, ancien technicien de maintenance reconverti dans les systèmes d\'information complexes. Actuellement en Master Cyber.',
+            'skills': 'CORE: Linux, Windows Server, VMware. <br> TOOLS: Powershell, Gitlab, FOG Project. <br> SECURITY: SecNum Académie, RGPD, Chiffrement.',
+            'experience': 'Dernier poste: Ministère des Armées (Exploitant SI). <br> Avant: CNRS (8 ans d\'expertise infrastructure).',
+            'contact': 'Mail: olivier.pavilla@gmail.com | Tel: 07 82 25 68 81',
+            'sudo': 'Access denied. You are not Olivier.',
+            'ls': 'cv.pdf  portfolio_v1.html  secret_passwords.txt (encrypted)'
+        };
+
+        if (terminalInput) {
+            terminalInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    const command = this.value.toLowerCase().trim();
+                    let output = '';
+
+                    // Add command to history
+                    const cmdLine = document.createElement('div');
+                    cmdLine.className = 'mb-1';
+                    cmdLine.innerHTML = `<span class="mr-2 text-cyan-400">guest@olivier:~$</span> ${this.value}`;
+                    outputHistory.appendChild(cmdLine);
+
+                    // Process command
+                    if (command === 'clear') {
+                        outputHistory.innerHTML = '';
+                    } else if (commands[command]) {
+                        output = commands[command];
+                    } else if (command !== '') {
+                        output = `Command not found: ${command}. Type 'help' for list.`;
+                    }
+
+                    if (output && command !== 'clear') {
+                        const responseLine = document.createElement('div');
+                        responseLine.className = 'mb-4 text-slate-300 ml-4 border-l-2 border-slate-700 pl-2';
+                        responseLine.innerHTML = output;
+                        outputHistory.appendChild(responseLine);
+                    }
+
+                    this.value = '';
+                    // Scroll to bottom
+                    terminalBody.scrollTop = terminalBody.scrollHeight;
+                }
+            });
+        }
+
+        // Auto-focus terminal on click
+        document.addEventListener('click', function(e) {
+            // Optional: logic to focus input only when clicking terminal area
+        });
+    </script>
+</body>
 </html>
